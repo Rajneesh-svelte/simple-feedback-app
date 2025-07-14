@@ -18,7 +18,9 @@ pipeline {
         sh '''
           docker stop feedback-api || true
           docker rm feedback-api || true
-          docker run -d -p 3000:3000 \
+
+          # Run container mapping host port 5000 -> container port 3000
+          docker run -d -p 5000:3000 \
             -e PORT=$PORT \
             -e MONGODB_URL=$MONGODB_URL \
             --name feedback-api feedback-api
