@@ -1,6 +1,11 @@
 pipeline {
   agent any
 
+  environment {
+    PORT = '3000'
+    MONGODB_URL = 'mongodb+srv://rajneeshkumar6267:bC1T3upMX6eONeiS@cluster0.dwuye7x.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
+  }
+
   stages {
     stage('Build Docker Image') {
       steps {
@@ -10,8 +15,14 @@ pipeline {
 
     stage('Run Docker Container') {
       steps {
-        sh 'docker stop feedback-api || true && docker rm feedback-api || true'
-        sh 'docker run -d -p 3000:3000 --env-file server/.env --name feedback-api feedback-api'
+        sh '''
+          docker stop feedback-api || true
+          docker rm feedback-api || true
+          docker run -d -p 3000:3000 \
+            -e PORT=$PORT \
+            -e MONGODB_URL=$MONGODB_URL \
+            --name feedback-api feedback-api
+        '''
       }
     }
   }
