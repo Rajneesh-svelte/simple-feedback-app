@@ -4,7 +4,7 @@ pipeline {
   stages {
     stage('Clone Repo') {
       steps {
-        git 'https://github.com/Rajneesh-svelte/simple-feedback-app'
+        git branch: 'main', url: 'https://github.com/Rajneesh-svelte/simple-feedback-app.git'
       }
     }
 
