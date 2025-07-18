@@ -30,7 +30,7 @@ app.get("/new", (req, res) => {
   res.status(200).json({ message: "API is working!" });
 });
 app.get("/test", (req, res) => {
-  res.status(200).json({ message: "Data is working!" });
+  res.status(200).json({ message: "Everythinh id working is fine" });
 });
 
 // Start server
