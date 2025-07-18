@@ -4,6 +4,26 @@ services:
   feedback-api:
     build: ./server
     ports:
-      - "3000:3000"
+      - "3001:3000"
     env_file:
       - ./server/.env
+    depends_on:
+      - mongo
+    networks:
+      - feedback-net
+
+  mongo:
+    image: mongo
+    container_name: feedback-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - feedback-net
+
+volumes:
+  mongo-data:
+
+networks:
+  feedback-net:
