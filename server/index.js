@@ -29,6 +29,9 @@ app.post("/feedback", async (req, res) => {
 app.get("/new", (req, res) => {
   res.status(200).json({ message: "API is working!" });
 });
+app.get("/test", (req, res) => {
+  res.status(200).json({ message: "Data is working!" });
+});
 
 // Start server
 const PORT = process.env.PORT || 3000;
