@@ -33,6 +33,16 @@ app.get("/test", (req, res) => {
   res.status(200).json({ message: "Rajneesh Kumar this api is working fine" });
 });
 
+app.get("/rajneesh", (req, res) => {
+  res
+    .status(200)
+    .json({ message: "Tech Lead Rajneesh Kumar checking this api " });
+});
+
+app.get("/jenkins", (req, res) => {
+  res.status(200).json({ message: "Jenkins code  " });
+});
+
 // Start server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
